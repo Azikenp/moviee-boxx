@@ -5,6 +5,26 @@ import { Link } from "react-router-dom";
 
 const Card = ({ movie }) => {
   console.log(movie);
+  // Input date string in ISO format (YYYY-MM-DD)
+  const inputDateStr = movie && movie.release_date;
+
+  // Create a Date object using the input date string
+  const localDate = new Date(inputDateStr);
+
+  // Convert the local date to UTC by using UTC methods
+  const utcYear = localDate.getUTCFullYear();
+  const utcMonth = localDate.getUTCMonth();
+  const utcDay = localDate.getUTCDate();
+
+  // Create a new date object with the UTC components
+  const utcDate = new Date(
+    Date.UTC(utcYear, utcMonth, utcDay)
+  );
+
+  // Format the UTC date as desired
+  const utcDateString =
+    utcDate.toDateString();
+    console.log(utcDateString);
 
   return (
     <>
@@ -19,7 +39,7 @@ const Card = ({ movie }) => {
           data-testid="movie-poster"
         />
         <span className="text-[8px] text-gray-400 uppercase font-semibold" data-testid="movie-release-date">
-          usa 2016 - current
+          {utcDateString}
         </span>
         <p
           className="font-semibold text-[14px] mb-1.5"
