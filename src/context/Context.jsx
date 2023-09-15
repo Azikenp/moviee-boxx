@@ -28,7 +28,7 @@ export const MovieProvider = ({ children }) => {
   const getTrendingMovies = async () => {
     try {
       const data = await fetch(
-        `https://api.themoviedb.org/3/trending/all/day?language=en-US&api_key=476bef949bb518e1997009b6d1bf69a4`
+        `https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1&api_key=476bef949bb518e1997009b6d1bf69a4`
       )
         .then((res) => res.json())
         .then((json) => json);

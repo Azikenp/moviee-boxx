@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import twoTickets from "../assets/Two-Tickets.svg";
 import logoSvg from "../assets/Logo.svg";
 import list from "../assets/List.svg";
+import play from "../assets/Play.svg";
 import fallbackImage from "../assets/imagefallback.jpg";
 import listWhite from "../assets/List-white.png";
 import { Link } from "react-router-dom";
@@ -63,8 +64,10 @@ const MovieDetail = ({ data }) => {
               MovieBox
             </p>
           </Link>
-          <img
-            className="rounded-[20px] w-full h-[40%]"
+          <div className="relative rounded-[20px] w-full h-[40%]">
+            <img className="absolute w-[100px] top-[40%] left-[40%] cursor-pointer" src={play} alt="" />
+            <img
+            className="rounded-[20px] w-full h-full"
             src={
               data && data.backdrop_path
                 ? `https://image.tmdb.org/t/p/original${data.backdrop_path}`
@@ -72,6 +75,8 @@ const MovieDetail = ({ data }) => {
             }
             alt=""
           />
+          </div>
+          
 
           <div className="flex items-center justify-between mt-7">
             <div className="flex items-center">
