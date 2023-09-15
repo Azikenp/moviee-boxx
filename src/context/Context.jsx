@@ -9,6 +9,7 @@ export const MovieProvider = ({ children }) => {
   const [trendingMovies, setTrendingMovies] = useState();
   const [searchResults, setSearchResults] = useState([]);
   const [movieDetails, setMovieDetails] = useState();
+  const [saved, setSaved] = useState(true);
 
   // const getMovieData = async () => {
   //   try {
@@ -75,6 +76,7 @@ export const MovieProvider = ({ children }) => {
         getMovieDetails,
         searchResults,
         getSearchResults,
+        saved, setSaved
       }}
     >
       {children}

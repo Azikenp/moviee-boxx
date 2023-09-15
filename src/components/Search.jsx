@@ -56,10 +56,9 @@ const Search = () => {
         <ul className="flex items-center lg:justify-start md:justify-center flex-wrap gap-x-[4rem] absolute z-[100] top-[5.3rem] left-0 w-full h-[465px] rounded overflow-x-hidden py-6 md:px-20 px-12 bg-gray-200 bg-opacity-60 backdrop-blur-md scrollbar-thin scrollbar-thumb-[#e11d47bf] scrollbar-track-gray-200">
           {searchResults ? (
             searchResults.map((movie) => {
+              console.log(movie);
               // Input date string in ISO format (YYYY-MM-DD)
               const inputDateStr = movie && movie.release_date;
-              console.log(inputDateStr);
-              console.log(movie)
 
               // Create a Date object using the input date string
               const localDate = new Date(inputDateStr);
@@ -70,19 +69,10 @@ const Search = () => {
               const utcDay = localDate.getUTCDate();
 
               // Create a new date object with the UTC components
-              const utcDate = new Date(
-                Date.UTC(
-                  utcYear,
-                  utcMonth,
-                  utcDay,
-                )
-              );
+              const utcDate = new Date(Date.UTC(utcYear, utcMonth, utcDay));
 
               // Format the UTC date as desired
-              const utcDateString =
-                utcDate.toDateString() 
-                console.log(utcDateString);
-
+              const utcDateString = utcDate.toDateString();
 
               return (
                 <Link
@@ -102,7 +92,9 @@ const Search = () => {
                       </p>
                     </div>
                     <p className="font-bold text-[12px] text-black ml-2">
-                      {movie.release_date === ""?  "No date available" :  utcDateString}
+                      {movie.release_date === ""
+                        ? "No date available"
+                        : utcDateString}
                     </p>
                   </li>
                 </Link>

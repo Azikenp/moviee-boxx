@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import imdb from "../assets/imdb.svg";
 import tomato from "../assets/tomato.svg";
 import { Link } from "react-router-dom";
+import { MovieContext } from "../context/Context";
 
 const Card = ({ movie }) => {
+  const { saved, setSaved } = useContext(MovieContext);
+  console.log(saved);
+
   // Input date string in ISO format (YYYY-MM-DD)
   const inputDateStr = movie && movie.release_date;
 
@@ -24,7 +28,7 @@ const Card = ({ movie }) => {
   return (
     <>
       <Link
-        to={`/${movie.id}`}
+        // to={`/${movie.id}`}
         className="relative mb-7 w-[14rem] md:w-[13rem] lg:w-[14rem] hover:scale-110 ease-in duration-300"
       >
         <img
@@ -67,7 +71,7 @@ const Card = ({ movie }) => {
           <span className="p-2 py-0.5 bg-gray-500 bg-opacity-70 rounded-full font-semibold text-black text-[10px] uppercase">
             Tv series
           </span>
-          <button>
+          <button onClick={() => setSaved((prev) => !prev)}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width={30}
@@ -78,7 +82,7 @@ const Card = ({ movie }) => {
                 <ellipse
                   cx={15}
                   cy={15.184}
-                  fill="#F3F4F6"
+                  fill={`${saved? "red" : "black"}`}
                   fillOpacity={0.5}
                   rx={15}
                   ry={14.605}

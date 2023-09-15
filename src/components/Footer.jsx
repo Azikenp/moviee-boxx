@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom'
 const Footer = () => {
   return (
     <div className='py-16 flex items-center justify-center flex-col'>
-        <div className='flex gap-9 mb-7'>
+        <div className='socials flex gap-9 mb-7'>
           <Link to="/"><img className='w-[24px] h-[24px] hover:scale-110 ease-in duration-300' src={facebook} alt="facebook logo" /></Link>
           <Link to="/"><img className='w-[24px] h-[24px] hover:scale-110 ease-in duration-300' src={instagram} alt="instagram logo" /></Link>
           <Link to="/"><img className='w-[24px] h-[24px] hover:scale-110 ease-in duration-300' src={twitter} alt="twitter logo" /></Link>
