@@ -28,10 +28,12 @@ const MovieDetails = () => {
   }, [movieId]);
 
   return (
-    <div className="flex">
-      <Sidebar/>
-      <MovieDetail data={movieDetails}/>
-    </div>
+    <MovieProvider>
+      <div className="flex">
+        <Sidebar />
+        <MovieDetail data={movieDetails} />
+      </div>
+    </MovieProvider>
   );
 };
 

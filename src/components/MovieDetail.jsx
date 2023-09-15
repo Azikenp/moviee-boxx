@@ -1,12 +1,19 @@
-import React from "react";
+import React, { useContext } from "react";
 import favorite from "../assets/Favorite.svg";
 import twoTickets from "../assets/Two-Tickets.svg";
 import logoSvg from "../assets/Logo.svg";
 import list from "../assets/List.svg";
 import listWhite from "../assets/List-white.png";
 import { Link } from "react-router-dom";
+import { MovieContext } from "../context/Context";
 
 const MovieDetail = ({ data }) => {
+  const { saved, setSaved, savedItems, setSavedItems } =
+    useContext(MovieContext);
+  console.log(saved);
+
+
+
   // Input date string in ISO format (YYYY-MM-DD)
   const inputDateStr = data && data.release_date;
 
@@ -29,6 +36,27 @@ const MovieDetail = ({ data }) => {
   // Format the UTC date as desired
   const utcDateString =
     utcDate.toDateString() + " " + utcDate.toTimeString().slice(0, 8) + " GMT";
+
+
+
+    const handleSaved = (movieId) => {
+      // Toggle the 'saved' state
+      setSaved((prevSaved) => !prevSaved);
+  
+      if (Array.isArray(savedItems)) {
+        if (savedItems.includes(movieId)) {
+          // If the movieId is already in savedItems, remove
+          let savedMovies = savedItems.filter((movie) => movie !== movieId);
+          setSavedItems(savedMovies);
+        } else {
+          // If the movieId is not in savedItems, add it
+          setSavedItems((prevItems) => [...prevItems, movieId]);
+        }
+      } else {
+        // If savedItems is not an array, initialize it with an array containing movieId
+        setSavedItems([movieId]);
+      }
+    };
 
   return (
     <div className="relative flex flex-col md:pt-9 pt-4 md:w-[70%] w-full px-4 md:px-0 md:pr-4 pb-3 lg:pb-0">
@@ -83,9 +111,57 @@ const MovieDetail = ({ data }) => {
           </div>
         </div>
         <div className="lg:flex items-center hidden">
-          <div className="cursor-pointer">
-            <img src={favorite} alt="" />
-          </div>
+        <button onClick={() => handleSaved(data.id)}>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width={30}
+              height={30}
+              fill="red"
+            >
+              <g filter="url(#a)">
+                <ellipse
+                  cx={15}
+                  cy={15.184}
+                  fill={`${
+                    data && savedItems.includes(data.id) ? "red" : "black"
+                  }`}
+                  fillOpacity={0.5}
+                  rx={15}
+                  ry={14.605}
+                />
+              </g>
+              <path
+                fill="#D1D5DB"
+                fillRule="evenodd"
+                d="M8.172 10.483c1.562-1.521 4.094-1.521 5.656 0L15 11.623l1.172-1.14c1.562-1.521 4.094-1.521 5.656 0a3.823 3.823 0 0 1 0 5.508L15 22.64l-6.828-6.65a3.823 3.823 0 0 1 0-5.507Z"
+                clipRule="evenodd"
+              />
+              <defs>
+                <filter
+                  id="a"
+                  width={34}
+                  height={33.211}
+                  x={-2}
+                  y={-1.421}
+                  colorInterpolationFilters="sRGB"
+                  filterUnits="userSpaceOnUse"
+                >
+                  <feFlood floodOpacity={0} result="BackgroundImageFix" />
+                  <feGaussianBlur in="BackgroundImageFix" stdDeviation={1} />
+                  <feComposite
+                    in2="SourceAlpha"
+                    operator="in"
+                    result="effect1_backgroundBlur_1820_401"
+                  />
+                  <feBlend
+                    in="SourceGraphic"
+                    in2="effect1_backgroundBlur_1820_401"
+                    result="shape"
+                  />
+                </filter>
+              </defs>
+            </svg>
+          </button>
           <p className="text-[18px] font-semibold ml-3">
             <span className="text-gray-400 text-[20px]">8.5</span> | 350k
           </p>
