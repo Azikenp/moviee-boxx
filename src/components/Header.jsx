@@ -9,7 +9,7 @@ const Header = () => {
   return (
     <div
       style={{
-        backgroundImage: `url(https://image.tmdb.org/t/p/original${trendingMovies && trendingMovies[0].backdrop_path})`,
+        backgroundImage: `url(https://image.tmdb.org/t/p/original${trendingMovies && trendingMovies[2].backdrop_path})`,
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center",
@@ -17,7 +17,7 @@ const Header = () => {
       }}
       className="relative py-6 px-12 md:px-20 min-h-[100vh] md:min-h-[85vh]"
     >
-      <div className="absolute top-0 left-0 bg-black w-[100vw] md:h-[85vh] h-[100vh] bg-opacity-10"></div>
+      {/* <div className="absolute top-0 left-0 bg-black w-[100vw] md:h-[85vh] h-[100vh] bg-opacity-10"></div> */}
       <Navbar />
       <Hero />
     </div>

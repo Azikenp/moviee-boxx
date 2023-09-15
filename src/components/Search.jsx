@@ -4,6 +4,7 @@ import { MovieContext } from "../context/Context";
 
 const Search = () => {
   const [searchText, setSearchText] = useState("");
+  const [searching, setSearching] = useState(false);
   const { searchResults, getSearchResults } = useContext(MovieContext);
 
   // console.log(searchResults);
@@ -11,14 +12,17 @@ const Search = () => {
   const handleInput = (e) => {
     e.preventDefault();
     let query = e.target.value;
+    if(query.length === 0) setSearching(false);
     setSearchText(query);
     // getSearchResults(query);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setSearching(true)
     getSearchResults(searchText);
   };
+
 
   return (
     <>
@@ -51,9 +55,9 @@ const Search = () => {
           </svg>
         </button>
 
-        {searchResults.length > 0 ? (
+        {searching ? (
           <ul className="flex items-center lg:justify-start md:justify-center flex-wrap gap-x-[4rem] absolute top-[5.3rem] left-0 w-full h-[465px] rounded overflow-x-hidden py-6 md:px-20 px-12 bg-gray-200 bg-opacity-60 backdrop-blur-md scrollbar-thin scrollbar-thumb-[#e11d47bf] scrollbar-track-gray-200 z-20">
-            {searchResults ? (
+            {searchResults.length > 0 ? (
               searchResults.map((movie) => {
                 console.log(movie);
                 // Input date string in ISO format (YYYY-MM-DD)
