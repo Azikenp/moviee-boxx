@@ -11,6 +11,7 @@ export const MovieProvider = ({ children }) => {
   const [movieDetails, setMovieDetails] = useState();
   const [saved, setSaved] = useState(true);
   const [savedItems, setSavedItems] = useState([]);
+  const [error, setError] = useState(null)
 
   // const getMovieData = async () => {
   //   try {
@@ -48,6 +49,7 @@ export const MovieProvider = ({ children }) => {
       setSearchResults(data.results);
     } catch (error) {
       console.log(error);
+      setError("Sorry, we couldn't find what you were searching for")
     }
   };
 
@@ -67,7 +69,7 @@ export const MovieProvider = ({ children }) => {
   useLayoutEffect(() => {
     // getMovieData()
     getTrendingMovies();
-  }, []);
+  }, [searchResults]);
 
   return (
     <MovieContext.Provider

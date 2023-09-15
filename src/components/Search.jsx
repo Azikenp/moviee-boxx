@@ -7,7 +7,7 @@ import { MovieContext } from "../context/Context";
 const Search = () => {
   const [searchText, setSearchText] = useState("");
   const [searching, setSearching] = useState(false);
-  const { searchResults, getSearchResults } = useContext(MovieContext);
+  const { searchResults, getSearchResults, error } = useContext(MovieContext);
 
   // console.log(searchResults);
 
@@ -59,10 +59,9 @@ const Search = () => {
 
         {searching ? (
           <ul className="flex items-center lg:justify-start md:justify-center flex-wrap gap-x-[4rem] absolute top-[5.3rem] left-0 w-full h-[465px] rounded overflow-x-hidden py-6 md:px-20 px-12 bg-gray-200 bg-opacity-60 backdrop-blur-md scrollbar-thin scrollbar-thumb-[#e11d47bf] scrollbar-track-gray-200 z-20">
-            <div className="text-black font-bold text-[20px] fixed right-0 top-0">x</div>
+            {error && <div className="flex w-full h-full items-center">{error}</div>}
             {searchResults.length > 0 ? (
               searchResults.map((movie) => {
-                console.log(movie);
                 // Input date string in ISO format (YYYY-MM-DD)
                 const inputDateStr = movie && movie.release_date;
 
