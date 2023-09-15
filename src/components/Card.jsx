@@ -17,7 +17,7 @@ const Card = ({ movie }) => {
           alt="movie poster"
           data-testid="movie-poster"
         />
-        <span className="text-[8px] text-gray-400 uppercase font-semibold">
+        <span className="text-[8px] text-gray-400 uppercase font-semibold" data-testid="movie-release-date">
           usa 2016 - current
         </span>
         <p
