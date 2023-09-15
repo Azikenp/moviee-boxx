@@ -4,6 +4,7 @@ import tomato from "../assets/tomato.svg";
 import { Link } from "react-router-dom";
 
 const Card = ({ movie }) => {
+  console.log(movie);
 
   return (
     <>

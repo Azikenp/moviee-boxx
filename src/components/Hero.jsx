@@ -7,31 +7,6 @@ import play from "../assets/Play.svg";
 const Hero = () => {
   const { trendingMovies } = useContext(MovieContext);
 
-  // Input date string in ISO format (YYYY-MM-DD)
-  const inputDateStr = "2021-12-15";
-
-  // Create a Date object using the input date string
-  const localDate = new Date(inputDateStr);
-
-  // Convert the local date to UTC by using UTC methods
-  const utcYear = localDate.getUTCFullYear();
-  const utcMonth = localDate.getUTCMonth();
-  const utcDay = localDate.getUTCDate();
-  const utcHours = localDate.getUTCHours();
-  const utcMinutes = localDate.getUTCMinutes();
-  const utcSeconds = localDate.getUTCSeconds();
-
-  // Create a new date object with the UTC components
-  const utcDate = new Date(
-    Date.UTC(utcYear, utcMonth, utcDay, utcHours, utcMinutes, utcSeconds)
-  );
-
-  // Format the UTC date as desired
-  const utcDateString =
-    utcDate.toDateString() + " " + utcDate.toTimeString().slice(0, 8) + " GMT";
-
-  console.log(utcDateString); // Display the formatted UTC date
-
   return (
     <div className="flex items-center justify-between md:flex-row sm:flex-col py-36 z-10">
       <div className="flex flex-col z-10 md:w-[35%] sm:w-full">
