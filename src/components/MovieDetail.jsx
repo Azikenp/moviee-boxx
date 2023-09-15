@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import favorite from "../assets/Favorite.svg";
 import twoTickets from "../assets/Two-Tickets.svg";
 import logoSvg from "../assets/Logo.svg";
 import list from "../assets/List.svg";

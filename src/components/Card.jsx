@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import imdb from "../assets/imdb.svg";
+import fallbackImage from "../assets/imagefallback.jpg"
 import tomato from "../assets/tomato.svg";
 import { Link } from "react-router-dom";
 import { MovieContext } from "../context/Context";
@@ -52,7 +53,7 @@ const Card = ({ movie }) => {
       >
         <img
           className="w-full h-[20rem] rounded-t-sm"
-          src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
+          src={movie.poster_path? `https://image.tmdb.org/t/p/original${movie.poster_path}` : fallbackImage}
           alt="movie poster"
           data-testid="movie-poster"
         />
