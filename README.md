@@ -25,7 +25,7 @@ Movie Box App
 
 ## Getting Started
 
-On initial load of the page,you are greeted by an amazing UI that shows a popular movie atm. There is also a search box where you can search for anmovie of your choice , just click on any movie of your choice to visits the movie details page. On the homepage also features the top ten trending movies at the time of visiting the page. 
+On initial load of the page,you are greeted by an amazing UI that shows a popular movie atm. There is also a search box where you can search for any movie of your choice , just click on any movie of your choice to visit the movie details page. On the homepage also features the top ten trending movies at the time of visiting the page. 
 
 There is also a favoriting functionality where you can favoruite your best movies.
 
