@@ -7,7 +7,6 @@ import listWhite from "../assets/List-white.png";
 import { Link } from "react-router-dom";
 
 const MovieDetail = ({ data }) => {
-  console.log(data)
   return (
     <div className="relative flex flex-col md:pt-9 pt-4 md:w-[70%] w-full px-4 md:px-0 md:pr-4 pb-3 lg:pb-0">
       <Link className="md:hidden items-center mb-[10px] px-4" to="/">
