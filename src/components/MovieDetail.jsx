@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import twoTickets from "../assets/Two-Tickets.svg";
 import logoSvg from "../assets/Logo.svg";
 import list from "../assets/List.svg";
-import fallbackImage from "../assets/imagefallback.jpg"
+import fallbackImage from "../assets/imagefallback.jpg";
 import listWhite from "../assets/List-white.png";
 import { Link } from "react-router-dom";
 import { MovieContext } from "../context/Context";
@@ -65,9 +65,11 @@ const MovieDetail = ({ data }) => {
           </Link>
           <img
             className="rounded-[20px] w-full h-[40%]"
-            src={data && data.backdrop_path? `https://image.tmdb.org/t/p/original${
-             data.backdrop_path
-            }` : fallbackImage}
+            src={
+              data && data.backdrop_path
+                ? `https://image.tmdb.org/t/p/original${data.backdrop_path}`
+                : fallbackImage
+            }
             alt=""
           />
 

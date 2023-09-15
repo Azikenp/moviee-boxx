@@ -1,8 +1,6 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { MovieContext } from "../context/Context";
-import imdb from "../assets/imdb.svg";
-import tomato from "../assets/tomato.svg";
 import Card from "./Card";
 
 const Trending = () => {
@@ -17,7 +15,7 @@ const Trending = () => {
           <span className="font-bold">&gt;</span>
         </Link>
       </div>
-      <div className="md:grid items-center lg:grid-cols-4 md:grid-cols-3 sm:flex sm:flex-col gap-x-[3.4rem] gax">
+      <div className="md:grid items-center lg:grid-cols-4 md:grid-cols-3 sm:flex sm:flex-col gap-x-[3.4rem] gap-y-3">
         {trendingMovies
           ? trendingMovies.slice(0, 10).map((movie) => {
               return (

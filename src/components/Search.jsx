@@ -1,5 +1,7 @@
 import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import fallbackImage from "../assets/imagefallback.jpg";
+
 import { MovieContext } from "../context/Context";
 
 const Search = () => {
@@ -57,6 +59,7 @@ const Search = () => {
 
         {searching ? (
           <ul className="flex items-center lg:justify-start md:justify-center flex-wrap gap-x-[4rem] absolute top-[5.3rem] left-0 w-full h-[465px] rounded overflow-x-hidden py-6 md:px-20 px-12 bg-gray-200 bg-opacity-60 backdrop-blur-md scrollbar-thin scrollbar-thumb-[#e11d47bf] scrollbar-track-gray-200 z-20">
+            <div className="text-black font-bold text-[20px] fixed right-0 top-0">x</div>
             {searchResults.length > 0 ? (
               searchResults.map((movie) => {
                 console.log(movie);
@@ -86,9 +89,9 @@ const Search = () => {
                     <li className="flex items-center justify-between text-white border-[1px] bg-[#e11d4711] border-[#e11d47bf] rounded-lg px-3 py-2">
                       <div className="flex items-center">
                         <img
-                          className="max-w-[100px] max-h-[70px] rounded-lg mr-2"
-                          src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
-                          alt="movie poster"
+                          className="w-[60px] h-[70px] rounded-lg mr-2"
+                          src={movie.poster_path? `https://image.tmdb.org/t/p/original${movie.poster_path}` : fallbackImage}
+                          alt="movie poster "
                         />
                         <p className="font-bold text-[14px] text-black capitalize">
                           {movie.title}
