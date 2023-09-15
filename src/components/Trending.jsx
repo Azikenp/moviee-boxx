@@ -15,11 +15,11 @@ const Trending = () => {
           <span className="font-bold">&gt;</span>
         </Link>
       </div>
-      <div className="md:grid items-center lg:grid-cols-4 md:grid-cols-3 sm:flex sm:flex-col gap-x-[3.4rem] gap-y-3">
+      <div className="md:grid items-center lg:grid-cols-4 md:grid-cols-3 sm:flex sm:flex-col gap-x-[3.4rem]">
         {trendingMovies
           ? trendingMovies.slice(0, 10).map((movie) => {
               return (
-                <Card movie={movie} key={movie.id} data-testid="movie-card"/>
+                <Card className="mb-5" movie={movie} key={movie.id} data-testid="movie-card"/>
               );
             })
           : ""}

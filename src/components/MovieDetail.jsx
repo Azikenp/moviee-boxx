@@ -104,7 +104,7 @@ const MovieDetail = ({ data }) => {
               >
                 {data && data.runtime} mins
               </p>
-              <div className="md:flex gap-x-3 hidden text-[13px] font-bold text-[#e11d48]">
+              <div className="lg:flex gap-x-3 hidden text-[13px] font-bold text-[#e11d48]">
                 <p className="border-[1px] border-[#e11d47a4] rounded-full px-[17px] py-[4px]">
                   Action
                 </p>
