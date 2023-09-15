@@ -8,9 +8,9 @@ const Hero = () => {
   const { trendingMovies } = useContext(MovieContext);
 
   return (
-    <div className="flex items-center justify-between md:flex-row sm:flex-col py-36 z-10">
-      <div className="flex flex-col z-10 md:w-[35%] sm:w-full">
-        <h1 className="text-white z-10 md:text-[45px] text-[50px] font-semibold mb-4">
+    <div className="flex items-center justify-between md:flex-row sm:flex-col py-36">
+      <div className="flex flex-col md:w-[35%] sm:w-full z-50">
+        <h1 className="text-white md:text-[45px] text-[50px] font-semibold mb-4">
           {trendingMovies && trendingMovies[0].title}
         </h1>
 
