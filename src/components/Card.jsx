@@ -7,8 +7,6 @@ import { MovieContext } from "../context/Context";
 const Card = ({ movie }) => {
   const { saved, setSaved, savedItems, setSavedItems } =
     useContext(MovieContext);
-  console.log(saved);
-  console.log(savedItems);
 
   // Input date string in ISO format (YYYY-MM-DD)
   const inputDateStr = movie && movie.release_date;
@@ -104,7 +102,7 @@ const Card = ({ movie }) => {
                   cx={15}
                   cy={15.184}
                   fill={`${
-                    movie && savedItems.includes(movie.id) ? "red" : "black"
+                    movie && savedItems.includes(movie.id) ? "red" : "#F3F4F6"
                   }`}
                   fillOpacity={0.5}
                   rx={15}

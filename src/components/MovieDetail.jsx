@@ -10,7 +10,6 @@ import { MovieContext } from "../context/Context";
 const MovieDetail = ({ data }) => {
   const { saved, setSaved, savedItems, setSavedItems } =
     useContext(MovieContext);
-  console.log(saved);
 
 
 
@@ -123,7 +122,7 @@ const MovieDetail = ({ data }) => {
                   cx={15}
                   cy={15.184}
                   fill={`${
-                    data && savedItems.includes(data.id) ? "red" : "black"
+                    data && savedItems.includes(data.id) ? "red" : "#F3F4F6"
                   }`}
                   fillOpacity={0.5}
                   rx={15}
