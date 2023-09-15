@@ -6,6 +6,30 @@ const Search = () => {
   const [searchText, setSearchText] = useState("");
   const { searchResults, getSearchResults } = useContext(MovieContext);
 
+   // Input date string in ISO format (YYYY-MM-DD)
+   const inputDateStr = searchResults && searchResults.release_date;
+   console.log(inputDateStr)
+
+   // Create a Date object using the input date string
+   const localDate = new Date(inputDateStr);
+ 
+   // Convert the local date to UTC by using UTC methods
+   const utcYear = localDate.getUTCFullYear();
+   const utcMonth = localDate.getUTCMonth();
+   const utcDay = localDate.getUTCDate();
+   const utcHours = localDate.getUTCHours();
+   const utcMinutes = localDate.getUTCMinutes();
+   const utcSeconds = localDate.getUTCSeconds();
+ 
+   // Create a new date object with the UTC components
+   const utcDate = new Date(
+     Date.UTC(utcYear, utcMonth, utcDay, utcHours, utcMinutes, utcSeconds)
+   );
+ 
+   // Format the UTC date as desired
+   const utcDateString =
+     utcDate.toDateString() + " " + utcDate.toTimeString().slice(0, 8) + " GMT";
+
   // console.log(searchResults);
 
   const handleInput = (e) => {
