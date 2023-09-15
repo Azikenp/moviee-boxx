@@ -7,6 +7,29 @@ import listWhite from "../assets/List-white.png";
 import { Link } from "react-router-dom";
 
 const MovieDetail = ({ data }) => {
+  // Input date string in ISO format (YYYY-MM-DD)
+  const inputDateStr = data && data.release_date;
+
+  // Create a Date object using the input date string
+  const localDate = new Date(inputDateStr);
+
+  // Convert the local date to UTC by using UTC methods
+  const utcYear = localDate.getUTCFullYear();
+  const utcMonth = localDate.getUTCMonth();
+  const utcDay = localDate.getUTCDate();
+  const utcHours = localDate.getUTCHours();
+  const utcMinutes = localDate.getUTCMinutes();
+  const utcSeconds = localDate.getUTCSeconds();
+
+  // Create a new date object with the UTC components
+  const utcDate = new Date(
+    Date.UTC(utcYear, utcMonth, utcDay, utcHours, utcMinutes, utcSeconds)
+  );
+
+  // Format the UTC date as desired
+  const utcDateString =
+    utcDate.toDateString() + " " + utcDate.toTimeString().slice(0, 8) + " GMT";
+
   return (
     <div className="relative flex flex-col md:pt-9 pt-4 md:w-[70%] w-full px-4 md:px-0 md:pr-4 pb-3 lg:pb-0">
       <Link className="md:hidden items-center mb-[10px] px-4" to="/">
@@ -36,7 +59,7 @@ const MovieDetail = ({ data }) => {
               className="text-[18px] font-semibold text-black mr-6 after:w-2 after:h-2 after:bg-gray-600 after:absolute after:right-2 after:top-2.5 after:rounded-[50%]"
               data-testid="movie-release-date"
             >
-              {data && data.release_date}
+              {data && utcDateString}
             </p>
           </div>
           <div className="relative">
@@ -51,8 +74,12 @@ const MovieDetail = ({ data }) => {
             {data && data.runtime} mins
           </p>
           <div className="md:flex gap-x-3 hidden text-[13px] font-bold text-[#e11d48]">
-            <p className="border-[1px] border-[#e11d47a4] rounded-full px-[17px] py-[4px]">Action</p>
-            <p className="border-[1px] border-[#e11d47a4] rounded-full px-[17px] py-[4px]">Drama</p>
+            <p className="border-[1px] border-[#e11d47a4] rounded-full px-[17px] py-[4px]">
+              Action
+            </p>
+            <p className="border-[1px] border-[#e11d47a4] rounded-full px-[17px] py-[4px]">
+              Drama
+            </p>
           </div>
         </div>
         <div className="lg:flex items-center hidden">
