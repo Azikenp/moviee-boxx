@@ -4,7 +4,6 @@ import tomato from "../assets/tomato.svg";
 import { Link } from "react-router-dom";
 
 const Card = ({ movie }) => {
-  console.log(movie);
   // Input date string in ISO format (YYYY-MM-DD)
   const inputDateStr = movie && movie.release_date;
 
@@ -17,14 +16,10 @@ const Card = ({ movie }) => {
   const utcDay = localDate.getUTCDate();
 
   // Create a new date object with the UTC components
-  const utcDate = new Date(
-    Date.UTC(utcYear, utcMonth, utcDay)
-  );
+  const utcDate = new Date(Date.UTC(utcYear, utcMonth, utcDay));
 
   // Format the UTC date as desired
-  const utcDateString =
-    utcDate.toDateString();
-    console.log(utcDateString);
+  const utcDateString = utcDate.toDateString();
 
   return (
     <>
@@ -38,7 +33,10 @@ const Card = ({ movie }) => {
           alt="movie poster"
           data-testid="movie-poster"
         />
-        <span className="text-[8px] text-gray-400 uppercase font-semibold" data-testid="movie-release-date">
+        <span
+          className="text-[8px] text-gray-400 uppercase font-semibold"
+          data-testid="movie-release-date"
+        >
           {utcDateString}
         </span>
         <p
