@@ -37,8 +37,12 @@ const Hero = () => {
         </button>
       </div>
 
-      <div className="md:flex flex-col hidden">
-        <p>right</p>
+      <div className="md:flex flex-col items-center text-[13px] absolute top-[50%] right-3 right-100 font-semibold hidden text-gray-400">
+        <span>1</span>
+        <span>2</span>
+        <span className="relative text-white text-[16px] after:w-4 after:h-[2px] after:bg-white after:absolute after:right-4 after:top-[11px]">3</span>
+        <span>4</span>
+        <span>5</span>
       </div>
     </div>
   );

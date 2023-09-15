@@ -12,7 +12,6 @@ const MovieDetail = ({ data }) => {
     useContext(MovieContext);
 
 
-
   // Input date string in ISO format (YYYY-MM-DD)
   const inputDateStr = data && data.release_date;
 
@@ -86,7 +85,7 @@ const MovieDetail = ({ data }) => {
               className="text-[18px] font-semibold text-black mr-6 after:w-2 after:h-2 after:bg-gray-600 after:absolute after:right-2 after:top-2.5 after:rounded-[50%]"
               data-testid="movie-release-date"
             >
-              {data && utcDateString}
+              {data && data.release_date !== "" ? utcDateString : "Date not provided"}
             </p>
           </div>
           <div className="relative">

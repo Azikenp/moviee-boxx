@@ -9,7 +9,7 @@ const Card = ({ movie }) => {
     useContext(MovieContext);
 
   // Input date string in ISO format (YYYY-MM-DD)
-  const inputDateStr = movie && movie.release_date;
+  const inputDateStr = movie && movie.release_date? movie.release_date: movie.first_air_date;
 
   // Create a Date object using the input date string
   const localDate = new Date(inputDateStr);
@@ -60,7 +60,7 @@ const Card = ({ movie }) => {
           className="text-[8px] text-gray-400 uppercase font-semibold"
           data-testid="movie-release-date"
         >
-          {utcDateString}
+          {movie.release_date !== "" ? utcDateString: "No date provided"}
         </span>
         <p
           className="font-semibold text-[14px] mb-1.5"
