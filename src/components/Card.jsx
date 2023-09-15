@@ -5,29 +5,6 @@ import { Link } from "react-router-dom";
 
 const Card = ({ movie }) => {
 
-  // Input date string in ISO format (YYYY-MM-DD)
-const inputDateStr = "2021-12-15";
-
-// Create a Date object using the input date string
-const localDate = new Date(inputDateStr);
-
-// Convert the local date to UTC by using UTC methods
-const utcYear = localDate.getUTCFullYear();
-const utcMonth = localDate.getUTCMonth();
-const utcDay = localDate.getUTCDate();
-const utcHours = localDate.getUTCHours();
-const utcMinutes = localDate.getUTCMinutes();
-const utcSeconds = localDate.getUTCSeconds();
-
-// Create a new date object with the UTC components
-const utcDate = new Date(Date.UTC(utcYear, utcMonth, utcDay, utcHours, utcMinutes, utcSeconds));
-
-// Format the UTC date as desired
-const utcDateString = utcDate.toDateString() + " " + utcDate.toTimeString().slice(0, 8) + " GMT";
-
-console.log(utcDateString); // Display the formatted UTC date
-
-
   return (
     <>
       <Link
@@ -68,7 +45,9 @@ console.log(utcDateString); // Display the formatted UTC date
         </p>
 
         <div className="flex items-center justify-between w-full px-3 absolute top-3">
-          <span className="p-2 py-0.5 bg-gray-500 bg-opacity-70 rounded-full font-semibold text-black text-[10px] uppercase">Tv series</span>
+          <span className="p-2 py-0.5 bg-gray-500 bg-opacity-70 rounded-full font-semibold text-black text-[10px] uppercase">
+            Tv series
+          </span>
           <button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
