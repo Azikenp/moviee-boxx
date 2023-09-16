@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import imdb from "../assets/imdb.svg";
-import fallbackImage from "../assets/imagefallback.jpg"
+import fallbackImage from "../assets/imagefallback.jpg";
 import tomato from "../assets/tomato.svg";
 import { Link } from "react-router-dom";
 import { MovieContext } from "../context/Context";
@@ -10,7 +10,8 @@ const Card = ({ movie }) => {
     useContext(MovieContext);
 
   // Input date string in ISO format (YYYY-MM-DD)
-  const inputDateStr = movie && movie.release_date? movie.release_date: movie.first_air_date;
+  const inputDateStr =
+    movie && movie.release_date ? movie.release_date : movie.first_air_date;
 
   // Create a Date object using the input date string
   const localDate = new Date(inputDateStr);
@@ -47,46 +48,51 @@ const Card = ({ movie }) => {
 
   return (
     <>
-      <Link
-        to={`/${movie.id}`}
-        className="relative mb-7 w-[14rem] md:w-[13rem] lg:w-[14rem] hover:scale-110 ease-in duration-300"
-      >
-        <img
-          className="w-full h-[20rem] rounded-t-sm"
-          src={movie.poster_path? `https://image.tmdb.org/t/p/original${movie.poster_path}` : fallbackImage}
-          alt="movie poster"
-          data-testid="movie-poster"
-        />
-        <span
-          className="text-[8px] text-gray-400 uppercase font-semibold"
-          data-testid="movie-release-date"
+      <div className="relative mb-7">
+        <Link
+          to={`/${movie.id}`}
+          className="mb-7 w-[14rem] md:w-[13rem] lg:w-[14rem] hover:scale-110 ease-in duration-300"
         >
-          {movie.release_date !== "" ? utcDateString: "No date provided"}
-        </span>
-        <p
-          className="font-semibold text-[14px] mb-1.5"
-          data-testid="movie-title"
-        >
-          {movie.title ? movie.title : movie.name}
-        </p>
-        <div className="flex items-center justify-between text-black mb-2">
-          <div className="flex text-[11px] text-gray-500">
-            <img className="mr-2 w-[24px]" src={imdb} alt="imdb logo" />
-            <p className="mr-5">
-              <span>86.0</span>
-              <span>/</span>
-              <span>100</span>
-            </p>
+          <img
+            className="w-full h-[20rem] rounded-t-sm"
+            src={
+              movie.poster_path
+                ? `https://image.tmdb.org/t/p/original${movie.poster_path}`
+                : fallbackImage
+            }
+            alt="movie poster"
+            data-testid="movie-poster"
+          />
+          <span
+            className="text-[8px] text-gray-400 uppercase font-semibold"
+            data-testid="movie-release-date"
+          >
+            {movie.release_date !== "" ? utcDateString : "No date provided"}
+          </span>
+          <p
+            className="font-semibold text-[14px] mb-1.5"
+            data-testid="movie-title"
+          >
+            {movie.title ? movie.title : movie.name}
+          </p>
+          <div className="flex items-center justify-between text-black mb-2">
+            <div className="flex text-[11px] text-gray-500">
+              <img className="mr-2 w-[24px]" src={imdb} alt="imdb logo" />
+              <p className="mr-5">
+                <span>86.0</span>
+                <span>/</span>
+                <span>100</span>
+              </p>
+            </div>
+            <div className="flex text-[11px] text-gray-500">
+              <img className="w-[13px]" src={tomato} alt="tomato ratings" />
+              <p className="mx-[5px]">97%</p>
+            </div>
           </div>
-          <div className="flex text-[11px] text-gray-500">
-            <img className="w-[13px]" src={tomato} alt="tomato ratings" />
-            <p className="mx-[5px]">97%</p>
-          </div>
-        </div>
-        <p className="text-[10px] text-gray-500 capitalize">
-          Action, adventure, triller
-        </p>
-
+          <p className="text-[10px] text-gray-500 capitalize">
+            Action, adventure, triller
+          </p>
+        </Link>
         <div className="flex items-center justify-between w-full px-3 absolute top-3">
           <span className="p-2 py-0.5 bg-gray-500 bg-opacity-70 rounded-full font-semibold text-black text-[10px] uppercase">
             Tv series
@@ -143,7 +149,7 @@ const Card = ({ movie }) => {
             </svg>
           </button>
         </div>
-      </Link>
+      </div>
     </>
   );
 };
