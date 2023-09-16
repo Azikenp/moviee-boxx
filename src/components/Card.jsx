@@ -9,23 +9,23 @@ const Card = ({ movie }) => {
   const { saved, setSaved, savedItems, setSavedItems } =
     useContext(MovieContext);
 
-  // Input date string in ISO format (YYYY-MM-DD)
-  const inputDateStr =
-    movie && movie.release_date ? movie.release_date : movie.first_air_date;
+  // // Input date string in ISO format (YYYY-MM-DD)
+  // const inputDateStr =
+  //   movie && movie.release_date ? movie.release_date : movie.first_air_date;
 
-  // Create a Date object using the input date string
-  const localDate = new Date(inputDateStr);
+  // // Create a Date object using the input date string
+  // const localDate = new Date(inputDateStr);
 
-  // Convert the local date to UTC by using UTC methods
-  const utcYear = localDate.getUTCFullYear();
-  const utcMonth = localDate.getUTCMonth();
-  const utcDay = localDate.getUTCDate();
+  // // Convert the local date to UTC by using UTC methods
+  // const utcYear = localDate.getUTCFullYear();
+  // const utcMonth = localDate.getUTCMonth();
+  // const utcDay = localDate.getUTCDate();
 
-  // Create a new date object with the UTC components
-  const utcDate = new Date(Date.UTC(utcYear, utcMonth, utcDay));
+  // // Create a new date object with the UTC components
+  // const utcDate = new Date(utcYear, utcMonth, utcDay, 0, 0, 0);
 
-  // Format the UTC date as desired
-  const utcDateString = utcDate.toDateString();
+  // // Format the UTC date as desired
+  // const utcDateString = utcDate.toISOString();
 
   const handleSaved = (movieId) => {
     // Toggle the 'saved' state
@@ -48,10 +48,10 @@ const Card = ({ movie }) => {
 
   return (
     <>
-      <div className="relative mb-7">
+      <div className="relative mb-7 hover:scale-110 ease-in duration-300">
         <Link
           to={`/${movie.id}`}
-          className="mb-7 w-[14rem] md:w-[13rem] lg:w-[14rem] hover:scale-110 ease-in duration-300"
+          className="mb-7 w-[14rem] md:w-[13rem] lg:w-[14rem]"
         >
           <img
             className="w-full h-[20rem] rounded-t-sm"
@@ -67,7 +67,11 @@ const Card = ({ movie }) => {
             className="text-[8px] text-gray-400 uppercase font-semibold"
             data-testid="movie-release-date"
           >
-            {movie.release_date !== "" ? utcDateString : "No date provided"}
+            {movie && movie.release_date
+              ? movie.release_date
+              : movie.first_air_date
+              ? movie.first_air_date
+              : "No date provided"}
           </span>
           <p
             className="font-semibold text-[14px] mb-1.5"

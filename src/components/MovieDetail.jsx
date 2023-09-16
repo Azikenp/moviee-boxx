@@ -12,28 +12,17 @@ const MovieDetail = ({ data }) => {
   const { saved, setSaved, savedItems, setSavedItems } =
     useContext(MovieContext);
 
-  // Input date string in ISO format (YYYY-MM-DD)
-  const inputDateStr = data && data.release_date;
-
-  // Create a Date object using the input date string
-  const localDate = new Date(inputDateStr);
-
-  // Convert the local date to UTC by using UTC methods
-  const utcYear = localDate.getUTCFullYear();
-  const utcMonth = localDate.getUTCMonth();
-  const utcDay = localDate.getUTCDate();
-  const utcHours = localDate.getUTCHours();
-  const utcMinutes = localDate.getUTCMinutes();
-  const utcSeconds = localDate.getUTCSeconds();
-
-  // Create a new date object with the UTC components
-  const utcDate = new Date(
-    Date.UTC(utcYear, utcMonth, utcDay, utcHours, utcMinutes, utcSeconds)
-  );
-
-  // Format the UTC date as desired
-  const utcDateString =
-    utcDate.toDateString() + " " + utcDate.toTimeString().slice(0, 8) + " GMT";
+    function formatDateToUTC(inputDateStr) {
+      // Create a Date object from the input date string
+      const inputDate = new Date(`${inputDateStr}T00:00:00.000Z`);
+    
+      // Extract components and format them as UTC
+      const year = inputDate.getUTCFullYear();
+      const month = String(inputDate.getUTCMonth() + 1).padStart(2, '0'); // Month is 0-based, so add 1
+      const day = String(inputDate.getUTCDate()).padStart(2, '0');
+    
+      return `${year}-${month}-${day}T00:00:00.000Z`;
+    }
 
   const handleSaved = (movieId) => {
     // Toggle the 'saved' state
@@ -94,7 +83,7 @@ const MovieDetail = ({ data }) => {
                   data-testid="movie-release-date"
                 >
                   {data && data.release_date !== ""
-                    ? utcDateString
+                    ? formatDateToUTC(data.release_date)
                     : "Date not provided"}
                 </p>
               </div>

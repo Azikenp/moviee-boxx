@@ -9,7 +9,7 @@ const Trending = () => {
   return (
     <div className="py-[2.62rem] px-20">
       <div className="flex items-center justify-between mb-8">
-        <h1 className="text-[34px] font-bold text-black">Trending Movies</h1>
+        <h1 className="text-[34px] font-bold text-black">Featured Movies</h1>
         <Link
           className="md:flex gap-1 text-[#e11d48] font-semibold hidden"
           to="/"
